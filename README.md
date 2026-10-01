@@ -1,4 +1,6 @@
-# Cross-Lingual Contrastive Learning
+[WIP] This repo is currently being adapted for publication & presentation.
+
+# Cross-Lingual Routing Alignment in Decoder-only MoEs
 
 
 code for designing and experimenting with cross-lingual contrastive learning in MoE LLMs
