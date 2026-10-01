@@ -1,0 +1,66 @@
+{
+    "qwen3": {
+        "auto_find_batch_size": false,
+        "batch_sizes_by_gpus": {
+            "full": {
+                "4": 16
+            }
+        }
+    },
+    "qwen3-moe-tiny": {
+        "auto_find_batch_size": false,
+        "batch_sizes_by_gpus": {
+            "full": {
+                "1": 8
+            }
+        },
+        "batch_sizes_smaller_gpu": {
+            "full": {
+                "1": 32
+            }
+        }
+    },
+    "gpt": {
+        "auto_find_batch_size": false,
+        "batch_sizes_by_gpus": {
+            "full": {
+                "2": 1,
+                "3": 12,
+                "4": 32
+            }
+        }
+    },
+    "phi-tiny": {
+        "auto_find_batch_size": true
+    },
+    "granite": {
+        "auto_find_batch_size": false,
+        "batch_sizes_by_gpus": {
+            "full": {
+                "1": 16,
+                "2": 32,
+                "4": 32
+            }
+        }
+    },
+    "marco": {
+        "auto_find_batch_size": false,
+        "batch_sizes_by_gpus": {
+            "full": {
+                "1": 8,
+                "2": 32,
+                "3": 32,
+                "4": 32
+            }
+        }
+    },
+    "ernie": {
+        "auto_find_batch_size": false,
+        "batch_sizes_by_gpus": {
+            "full": {
+                "3": 16,
+                "4": 32
+            }
+        }
+    }
+}
