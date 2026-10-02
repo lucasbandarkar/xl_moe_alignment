@@ -1,17 +1,14 @@
-# Vanilla SFT and Eval
+# Evaluation Launcher
 
-This folder now has two bash entrypoints:
+This folder now has a main bash entrypoint:
 
-- `run_sft_and_eval.sh` for training, then evaluating the merged model (NOT YET IMPLEMENTED)
 - `run_eval_only.sh` for evaluation only
 
 Examples:
 
 ```bash
-./run_sft_and_eval.sh -m phi-tiny -l pes -d my_custom_dataset -g 0
 ./run_eval_only.sh -m microsoft/Phi-tiny-MoE-instruct -l si -g 1
-
-./run_eval_only.sh -m ../contrastive_training/checkpoints/moe_contrastive_training_test -l si -g 0
+./run_eval_only.sh -m ../contrastive_training/checkpoints/moe_contrastive_training_test/checkpoint-2500/ -l si -g 0
 ```
 
 Common flags:
@@ -49,7 +46,9 @@ run whose last checkpoint is `checkpoint-6250` writes `summary_160k.json` under
 
 ## Create environment
 
-This env works for Phi-tiny & ling, but not for Qwen3.5.
+Confusingly, different models may require different environments based on transformers, CUDA, pytorch packages at the time of their release.
+
+This env was the main environment used for all models on NVIDIA CUDA remote servers:
 
 ```bash
 uv python install 3.12.11
@@ -62,8 +61,25 @@ uv pip install vllm==0.19.0
 uv pip install datasets==3.6.0 lm-eval==0.4.10 hf_transfer==0.1.9 peft==0.16.0 ray
 ```
 
-For Qwen3.5, i reused the environment at the bottom of `routing_analysis/README.md`, which i named `qwen35`
+For Qwen3.5, I reused the environment at the bottom of `routing_analysis/README.md`, which i named `qwen35`
 
 ## Evaluating a new language
 
 See `language_to_task.py` for instructions on how to add another language.
+
+## Code Organization
+
+- `README.md` documents setup and evaluation commands.
+- `run_eval_only.sh` launches an evaluation with the selected model, language, task, and GPUs.
+- `launch.sh` runs a configured sequence of evaluations and logs their output.
+- `run_eval.py` loads models, runs the selected tasks, and writes results.
+- `task_evaluators.py` implements scoring for the supported multilingual benchmarks.
+- `language_to_task.py` maps languages to tasks and benchmark-specific names.
+- `export_fsdp_checkpoint.py` converts FSDP checkpoints for vLLM evaluation.
+- `eval_output_paths.py` names output files for full runs and intermediate checkpoints.
+- `vllm_phimoe_patch.py` patches vLLM to load Phi-tiny-MoE models.
+- `pyproject.toml` declares the evaluation project's Python dependencies for users on AWS EC2 instances.
+- `task_utils/flores.yaml` configures the FLORES translation task.
+- `task_utils/global_mgsm.yaml` configures the Global MGSM math task.
+- `task_utils/gmmlu_medical_samples_dict.json` lists sampled questions for medical MMLU evaluation.
+- `task_utils/multiloko_utils.py` defines language-specific Multiloko prompts.

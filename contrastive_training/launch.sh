@@ -156,15 +156,16 @@ main() {
   echo "Writing full logs to: ${LOG_FILE}"
 
   run_training "tha marco baseline 201k lr1e-6" \
-    -l tha -m marco --baseline --no_optimizations -r 1e-6 -s 201
+    -l tha -m marco --baseline -r 1e-6 -s 201
 
   run_training "tha marco contrastive 200k lr1.2e-6" \
-    -l tha -m marco -a 0.1 -y 7 -x 19 --no_optimizations -r 1e-6 -s 201 --freezing_mode 2
+    -l tha -m marco -a 0.1 -y 7 -x 19 -r 1e-6 -s 201 --freezing_mode 2
 
   run_training "tha granite baseline 201k lr8e-7" \
-    -l tha -m granite --baseline --no_optimizations -r 8e-7 -s 201 -b 8
+    -l tha -m granite --baseline -r 8e-7 -s 201 -b 8
 
 
+  # Deprecated option examples below retain --no_optimizations in comments only; the flag is unsupported.
   # run_training "kir gpt baseline 199k lr6e-7" \
   #   -l kir -m gpt --baseline --no_optimizations -r 6e-7 -s 199 -b 16
   

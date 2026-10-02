@@ -289,7 +289,7 @@ def main(args):
     freezing_mode = args.freezing_mode
     if freezing_mode is None:
         freezing_mode = model_config.get("freezing_mode", 0)
-    use_liger_kernel = bool(model_config.get("use_liger_kernel", False)) and not args.no_optimizations
+    use_liger_kernel = bool(model_config.get("use_liger_kernel", False))
 
     model, tokenizer = load_models(
         args.nickname,
@@ -297,7 +297,7 @@ def main(args):
         fsdp=multi_gpu,
         is_aws=aws,
         use_model_cache=False,
-        use_optimizations=not args.no_optimizations,
+        use_optimizations=True,
     )
 
     data_limit = 1000 if args.test_run else args.samples * 1000
@@ -492,7 +492,8 @@ if __name__ == "__main__":
                         help="where to apply the contrastive auxiliary loss; hidden is currently Qwen3 packed training only")
     parser.add_argument('-r', '--learning_rate', type=float, default=1e-6, help="training learning rate")
     parser.add_argument('--resume_training', type=str, default=None, help="checkpoint directory to resume from & do another epoch, e.g. .../checkpoint-313")
-    parser.add_argument('--no_optimizations', '--no-optimizations', action="store_true", help="bypass optimizations.py and use the legacy modeling.py load path")
+    # Deprecated: optimizations are now always enabled; this option is no longer supported.
+    # parser.add_argument('--no_optimizations', '--no-optimizations', action="store_true", help="bypass optimizations.py and use the legacy modeling.py load path")
     parser.add_argument('--no_checkpoint', '--no-checkpoint', action="store_true", help="disable intermediate trainer checkpoints; final model saving still runs")
     parser.add_argument('--packed', action=BooleanOptionalAction, default=None,
                         help="pack sequences; defaults on for qwen3, marco, and granite; use --no-packed to override")

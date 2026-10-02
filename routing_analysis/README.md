@@ -1,4 +1,11 @@
-This folder contains auxiliary routing-analysis code.
+
+
+
+This folder contains routing-analysis code (no evals, no training).
+
+## Environment details
+
+Confusingly, different models may require different environments based on transformers, CUDA, pytorch packages at the time of their release.
 
 Instructions to recreate the `moe` env for these files:
 
@@ -21,3 +28,16 @@ pip install peft==0.16.0 uv==0.11.6 # for evals
 uv pip install vllm==0.18.0 # for evals
 pip install lm_eval==0.4.10 # for evals
 ```
+
+## Code Organization
+
+- `README.md` documents the routing analysis environment and files.
+- `requirements.txt` lists Python packages used for routing analysis.
+- `get_routing_weights.py` collects model router outputs for multilingual datasets.
+- `run_routing_weights_for_checkpoints.sh` collects routing weights for configured checkpoints.
+- `models.py` loads MoE models and extracts their router logits.
+- `utils.py` has random utils for data.
+- `analysis_helpers.py` computes routing entropy and similarity metrics.
+- `expert_importance_eda.ipynb` explores expert importance and routing patterns across languages.
+- `training_router_analysis.ipynb` compares routing behavior before and after training.
+- `training_cka_hiddenstate_analysis.ipynb` plots cross-lingual hidden-state similarity changes after training.

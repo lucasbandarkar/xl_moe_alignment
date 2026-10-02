@@ -6,7 +6,6 @@ When you want to evaluate a new language
 4. If it's in Multiloko, add it to CODE_TO_MULTILOKO_NAME and ensure multiloko_utils.py has a prompt builder for it.
 """
 
-# I have decided to not implement XLSum
 LANGUAGE_TO_TASK = {
     "en": ["belebele", "mgsm", "mmlu_prox", "global_mmlu_medical", "multiloko", "global_piqa",], # no flores, no include
     "fa": ["belebele", "global_mmlu_medical", "flores", "multiloko", "include", "global_piqa",],
