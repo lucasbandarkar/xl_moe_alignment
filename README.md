@@ -1,5 +1,3 @@
-[WIP] This repo is currently being adapted for publication & presentation.
-
 <h1 align="center">Cross-Lingual Alignment for Decoder-Only Models using MoE Routers</h1>
 
 <p align="center">
@@ -8,7 +6,7 @@
 
 <center>
 <p align="center">
-<img src="diagram.png" alt="Main Figure Animation" width="360" height="400" />
+<img src="diagram.png" alt="Main Figure Animation" width="540" height="600" />
 </p>
 </center>
 
