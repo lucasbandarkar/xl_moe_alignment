@@ -1,7 +1,7 @@
 <h1 align="center">Cross-Lingual Alignment for Decoder-Only Models using MoE Routers</h1>
 
 <p align="center">
-  <a style="display: inline; max-width: none" href="https://arxiv.org/abs/2610.01921"><img style="display: inline; max-width: none" alt="arXiv" src="https://img.shields.io/badge/arXiv-2509.09660-b31b1b.svg"></a>
+  <a style="display: inline; max-width: none" href="https://arxiv.org/abs/2610.01921"><img style="display: inline; max-width: none" alt="arXiv" src="https://img.shields.io/badge/arXiv-2610.01921-b31b1b.svg"></a>
 </p>
 
 <center>
